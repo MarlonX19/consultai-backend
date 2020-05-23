@@ -32,5 +32,22 @@ module.exports = {
     catch (error) {
       return res.send(error)
     }
+  },
+
+  async listData(req, res) {
+    const { user_id } = req.body;
+
+    try {
+      const response = await connection('users').where({ id: user_id }).select('*');
+      if (response.length > 0) {
+        return res.send(response);
+      }
+      return res.send({ message: 'Usuário não encontrado'});
+    }
+    catch (error) {
+      return res.send(error)
+    }
+
+
   }
 }
