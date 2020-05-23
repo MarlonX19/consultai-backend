@@ -5,6 +5,7 @@ exports.up = function (knex) {
       table.string('date');
       table.string('time');
       table.string('symptons');
+      table.boolean('isOpen');
 
       table.integer('doctor_id').notNullable();
       table.foreign('doctor_id').references('id').inTable('doctors');

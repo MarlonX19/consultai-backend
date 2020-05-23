@@ -20,6 +20,7 @@ routes.post('/doctors', uploads.single('doctorphoto'), DoctorController.store);
 
 routes.post('/consultations', ConsultationController.store);
 routes.get('/consultations', ConsultationController.listAll);
+routes.get('/consult', ConsultationController.listConsult);
 
 
 module.exports = routes;

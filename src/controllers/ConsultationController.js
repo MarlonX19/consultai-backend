@@ -39,5 +39,23 @@ module.exports = {
 
       return res.send(error)
     }
+  },
+
+  async listConsult(req, res) {
+    const { user_id } = req.body;
+
+    try {
+      const response = await connection('consultations').where({ user_id }).select("*");
+      console.log(response)
+      if (response.length > 0) {
+        return res.send(response)
+      }
+      return res.send({ message: 'Nenhum consulta encontrada' });
+    }
+    catch (error) {
+      console.log(error)
+
+      return res.send(error)
+    }
   }
 }
