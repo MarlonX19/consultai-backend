@@ -9,7 +9,7 @@ const uploads = multer(uploadConfig);
 
 
 routes.get('/users', UserController.listAll);
-routes.post('/users', UserController.store);
+routes.post('/users', uploads.single('userphoto'), UserController.store);
 
 
 module.exports = routes;

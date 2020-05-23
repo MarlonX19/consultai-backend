@@ -2,6 +2,7 @@ const connection = require('../database/connection');
 
 module.exports = {
   async store(req, res) {
+    const { filename } = req.file;
     const { first_name, last_name, email, password } = req.body;
 
     try {
@@ -9,10 +10,11 @@ module.exports = {
         first_name,
         last_name,
         email,
-        password
+        password,
+        avatar_path: filename
       })
 
-      console.log('response')
+      console.log(response)
       return res.send(response);
 
     }
