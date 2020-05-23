@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/MarlonX19/consultai-backend/issues"
   },
-  "homepage": "https://github.com/MarlonX19/consultai-backend#readme"
+  "homepage": "https://github.com/MarlonX19/consultai-backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
