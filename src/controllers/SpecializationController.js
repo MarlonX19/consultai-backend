@@ -16,5 +16,17 @@ module.exports = {
     catch (error) {
       return res.send(error)
     }
+  },
+
+  async listAll(req, res) {
+    
+    try {
+      const response = await connection('specialization').select('*');
+
+      return res.send(response);
+    }
+    catch (error) {
+      return res.send(error)
+    }
   }
 }

@@ -5,6 +5,7 @@ const UserController = require('./controllers/UserController');
 const DoctorController = require('./controllers/DoctorController');
 const ConsultationController = require('./controllers/ConsultationController');
 const SpecializationController = require('./controllers/SpecializationController');
+const DocSpec = require('./controllers/DoctorSpecializationController');
 
 const routes = express.Router();
 const uploads = multer(uploadConfig);
@@ -24,6 +25,11 @@ routes.get('/consultations', ConsultationController.listAll);
 routes.get('/consult', ConsultationController.listConsult);
 
 routes.post('/specializations', SpecializationController.store);
+routes.get('/specializations', SpecializationController.listAll);
+// routes.get('/consultations', ConsultationController.listAll);
+// routes.get('/consult', ConsultationController.listConsult);
+
+routes.post('/docespec', DocSpec.store);
 // routes.get('/consultations', ConsultationController.listAll);
 // routes.get('/consult', ConsultationController.listConsult);
 
