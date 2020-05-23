@@ -4,6 +4,7 @@ const uploadConfig = require('./config/upload');
 const UserController = require('./controllers/UserController');
 const DoctorController = require('./controllers/DoctorController');
 const ConsultationController = require('./controllers/ConsultationController');
+const SpecializationController = require('./controllers/SpecializationController');
 
 const routes = express.Router();
 const uploads = multer(uploadConfig);
@@ -21,6 +22,10 @@ routes.post('/doctors', uploads.single('doctorphoto'), DoctorController.store);
 routes.post('/consultations', ConsultationController.store);
 routes.get('/consultations', ConsultationController.listAll);
 routes.get('/consult', ConsultationController.listConsult);
+
+routes.post('/specializations', SpecializationController.store);
+// routes.get('/consultations', ConsultationController.listAll);
+// routes.get('/consult', ConsultationController.listConsult);
 
 
 module.exports = routes;
