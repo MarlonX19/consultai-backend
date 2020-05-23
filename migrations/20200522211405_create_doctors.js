@@ -5,6 +5,7 @@ exports.up = function (knex) {
       table.increments('id').primary();
       table.string('first_name', 255).notNullable();
       table.string('last_name', 255).notNullable();
+      table.string('phone');
       table.string('email');
       table.string('password');
       table.string('avatar_path');

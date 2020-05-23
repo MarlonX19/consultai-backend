@@ -6,11 +6,11 @@ exports.up = function (knex) {
       table.string('time');
       table.string('symptons');
 
-      table.string('doctor_id').notNullable();
-      table.foreign('doctor_id').references('doctor').inTable('id');
+      table.integer('doctor_id').notNullable();
+      table.foreign('doctor_id').references('id').inTable('doctors');
 
-      table.string('user_id').notNullable();
-      table.foreign('user_id').references('users').inTable('id');
+      table.integer('user_id').notNullable();
+      table.foreign('user_id').references('id').inTable('users');
     })
 };
 

@@ -3,11 +3,11 @@ exports.up = function (knex) {
     .createTable('doctor_specialization', function (table) {
       table.increments('id').primary();
 
-      table.string('doctor_id').notNullable();
-      table.foreign('doctor_id').references('doctor').inTable('id');
+      table.integer('doctor_id').notNullable();
+      table.foreign('doctor_id').references('id').inTable('doctors');
 
-      table.string('specialization_id').notNullable();
-      table.foreign('specialization_id').references('specialization').inTable('id');
+      table.integer('specialization_id').notNullable();
+      table.foreign('specialization_id').references('id').inTable('specialization');
     })
 };
 
