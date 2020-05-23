@@ -2,36 +2,53 @@ const connection = require('../database/connection');
 
 module.exports = {
 
-    //insert
-    async store(req, res) {
-        const { filename } = req.file;
-        const { first_name, last_name, email, password } = req.body;
+  //insert
+  async store(req, res) {
+    const { filename } = req.file;
+    const { first_name, last_name, email, password } = req.body;
 
-        try {
-            const response = await connection('doctor').insert({
-                first_name,
-                last_name,
-                email,
-                password,
-                avatar_path: filename
-            });
+    try {
+      const response = await connection('doctor').insert({
+        first_name,
+        last_name,
+        email,
+        password,
+        avatar_path: filename
+      });
 
-            return res.send(response);
+      return res.send(response);
 
-        }
-        catch (error) {
-            return res.send(error)
-        }
-    },
+    }
+    catch (error) {
+      return res.send(error)
+    }
+  },
 
-    async listAll(req, res) {
+  async listAll(req, res) {
 
-        try {
-          const response = await connection('doctor').select('*');
-          return res.send(response);
-        }
-        catch (error) {
-          return res.send(error)
-        }
+    try {
+      const response = await connection('doctor').select('*');
+      return res.send(response);
+    }
+    catch (error) {
+      return res.send(error)
+    }
+  },
+
+  async listData(req, res) {
+    const { doctor_id } = req.body;
+
+    try {
+      const response = await connection('doctor').where({ id: doctor_id }).select('*');
+      if (response.length > 0) {
+        return res.send(response);
       }
+      return res.send({ message: 'Médico não encontrado' });
+    }
+    catch (error) {
+      return res.send(error)
+    }
+
+
+  }
 }

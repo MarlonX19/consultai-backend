@@ -13,6 +13,7 @@ routes.get('/user', UserController.listData);
 routes.post('/users', uploads.single('userphoto'), UserController.store);
 
 routes.get('/doctors', DoctorController.listAll);
+routes.get('/doctor', DoctorController.listData);
 routes.post('/doctors', uploads.single('doctorphoto'), DoctorController.store);
 
 
