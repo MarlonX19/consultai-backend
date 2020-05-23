@@ -8,7 +8,7 @@ module.exports = {
     const { first_name, last_name, email, password } = req.body;
 
     try {
-      const response = await connection('doctor').insert({
+      const response = await connection('doctors').insert({
         first_name,
         last_name,
         email,
@@ -27,7 +27,7 @@ module.exports = {
   async listAll(req, res) {
 
     try {
-      const response = await connection('doctor').select('*');
+      const response = await connection('doctors').select('*');
       return res.send(response);
     }
     catch (error) {
@@ -39,7 +39,7 @@ module.exports = {
     const { doctor_id } = req.body;
 
     try {
-      const response = await connection('doctor').where({ id: doctor_id }).select('*');
+      const response = await connection('doctors').where({ id: doctor_id }).select('*');
       if (response.length > 0) {
         return res.send(response);
       }
