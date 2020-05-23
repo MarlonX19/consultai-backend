@@ -12,7 +12,7 @@ routes.get('/users', UserController.listAll);
 routes.post('/users', uploads.single('userphoto'), UserController.store);
 
 routes.get('/doctors', DoctorController.listAll);
-routes.post('/doctors', DoctorController.store);
+routes.post('/doctors', uploads.single('doctorphoto'), DoctorController.store);
 
 
 module.exports = routes;
