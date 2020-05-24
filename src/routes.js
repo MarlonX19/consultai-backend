@@ -31,6 +31,7 @@ routes.get('/specializations', SpecializationController.listAll);
 
 routes.post('/docespec', DocSpec.store);
 routes.get('/docespec', DocSpec.listDoctors);
+routes.get('/alldocespec', DocSpec.listAllDoctors);
 // routes.get('/consultations', ConsultationController.listAll);
 // routes.get('/consult', ConsultationController.listConsult);
 

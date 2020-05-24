@@ -28,7 +28,7 @@ module.exports = {
 
     try {
       const response = await connection('doctors').select('*');
-      return res.send(response);
+      return res.send({response: response});
     }
     catch (error) {
       return res.send(error)
