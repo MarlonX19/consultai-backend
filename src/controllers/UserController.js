@@ -1,5 +1,4 @@
 const connection = require('../database/connection');
-const knex = require('../database/connection');
 
 module.exports = {
   
@@ -55,7 +54,7 @@ module.exports = {
   async delete(req, res, next) {
     try {
       const {id} = req.params;
-      await knex('users').where({id}).del();
+      await connection('users').where({id}).del();
       return res.status(200).send('Usuário excluído com sucesso!');
 
     } catch (error) {
