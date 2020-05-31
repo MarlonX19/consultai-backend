@@ -81,7 +81,7 @@ module.exports = {
 
     } catch (error) {
         next(error);
-        return res.status(400).send({message: `Erro na exclusão do ID ${req.params.id}`});
+        return res.status(404).send({message: `Erro na exclusão do ID ${req.params.id}`});
     }
   }
 }
