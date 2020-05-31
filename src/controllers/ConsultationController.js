@@ -1,5 +1,4 @@
 const connection = require('../database/connection');
-const knex = require('../database/connection');
 
 module.exports = {
 
@@ -77,7 +76,7 @@ module.exports = {
   async delete(req, res, next) {
     try {
       const {id} = req.params;
-      await knex('consultations').where({id}).del();
+      await connection ('consultations').where({id}).del();
       return res.status(200).send('Consulta excluída com sucesso!');
 
     } catch (error) {
