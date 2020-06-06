@@ -1,0 +1,8 @@
+{
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/0eeb7679-4603-4fcd-9f7e-39de2b2449a6/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/consultai",
+  "appService.deploySubpath": ""
+}
