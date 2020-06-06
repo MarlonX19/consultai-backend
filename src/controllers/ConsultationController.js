@@ -1,6 +1,5 @@
 const connection = require('../database/connection');
 
-
 module.exports = {
 
   async store(req, res) {
@@ -70,6 +69,19 @@ module.exports = {
       console.log(error)
 
       return res.send(error)
+    }
+  },
+
+  // excluindo consulta pelo ID
+  async delete(req, res, next) {
+    try {
+      const {id} = req.params;
+      await connection ('consultations').where({id}).del();
+      return res.status(200).send('Consulta excluída com sucesso!');
+
+    } catch (error) {
+        next(error);
+        return res.status(404).send({message: `Erro na exclusão do ID ${req.params.id}`});
     }
   }
 }
