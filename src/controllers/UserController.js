@@ -1,7 +1,7 @@
 const connection = require('../database/connection');
 
 module.exports = {
-  
+
   async store(req, res) {
     const { filename } = req.file;
     const { first_name, last_name, email, password } = req.body;
@@ -43,7 +43,7 @@ module.exports = {
       if (response.length > 0) {
         return res.send(response);
       }
-      return res.send({ message: 'Usuário não encontrado'});
+      return res.send({ message: 'Usuário não encontrado' });
     }
     catch (error) {
       return res.send(error)
@@ -51,15 +51,16 @@ module.exports = {
   },
 
   // excluindo usuário pelo ID
-  async delete(req, res, next) {
+  async delete(req, res) {
     try {
-      const {id} = req.params;
-      await connection('users').where({id}).del();
+      const { id } = req.body;
+      const res = await connection('users').where({ id }).del();
+      console.log(res)
       return res.status(200).send('Usuário excluído com sucesso!');
 
     } catch (error) {
-        next(error);
-        return res.status(404).send({message: `Erro na exclusão do ID ${req.params.id}`});
+      console.log(error)
+      return res.send().status(404).send({ message: `Erro na exclusão do ID ${req.params.id}` });
     }
   }
 }

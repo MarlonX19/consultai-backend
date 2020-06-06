@@ -75,13 +75,13 @@ module.exports = {
   // excluindo consulta pelo ID
   async delete(req, res, next) {
     try {
-      const {id} = req.params;
-      await connection ('consultations').where({id}).del();
-      return res.status(200).send('Consulta excluída com sucesso!');
+      const { id } = req.body;
+      await connection('consultations').where({ id }).del();
+      return res.status(200).send({ message: 'Consulta excluída com sucesso!' });
 
     } catch (error) {
-        next(error);
-        return res.status(404).send({message: `Erro na exclusão do ID ${req.params.id}`});
+      next(error);
+      return res.status(404).send({ message: `Erro na exclusão do ID ${req.params.id}` });
     }
   }
 }
