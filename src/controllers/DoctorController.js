@@ -23,12 +23,11 @@ module.exports = {
       return res.send(error)
     }
   },
-
+  // listando
   async listAll(req, res) {
-
     try {
       const response = await connection('doctors').select('*');
-      return res.send({response: response});
+      return res.send({ response: response });
     }
     catch (error) {
       return res.send(error)
@@ -48,7 +47,19 @@ module.exports = {
     catch (error) {
       return res.send(error)
     }
+  },
 
+  // excluindo medico pelo ID
+  async delete(req, res, next) {
+    try {
+      const { id } = req.body;
+      await connection('doctors').where({ id }).del();
+      return res.status(200).send({ message: 'Médico excluído com sucesso!' });
 
+    } catch (error) {
+      next(error);
+      return res.status(404).send({ message: `Erro na exclusão do ID ${req.params.id}` });
+    }
   }
+
 }
