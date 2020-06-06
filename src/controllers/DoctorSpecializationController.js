@@ -60,7 +60,7 @@ module.exports = {
           "doctors.email",
           "doctors.avatar_path",
           "specialization.title"
-        );
+        ).orderBy('doctors.first_name', 'asc');
 
       if (response.length > 0) {
         return res.send(response);
