@@ -25,7 +25,7 @@ routes.delete('/doctors/', DoctorController.delete);
 // CONSULTAS
 routes.post('/consultations', ConsultationController.store);
 routes.get('/consultations', ConsultationController.listAll);
-routes.get('/consult', ConsultationController.listConsult);
+routes.get('/consult/:user_id', ConsultationController.listConsult);
 routes.delete('/consult', ConsultationController.delete);
 // ESPECIALIZAÇÃO
 routes.post('/specializations', SpecializationController.store);
