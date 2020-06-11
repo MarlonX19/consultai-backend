@@ -27,7 +27,19 @@ module.exports = {
   async listAll(req, res) {
 
     try {
-      const response = await connection('consultations').select("*");
+      const response = await connection('consultations')
+      .join('doctors', 'consultations.doctor_id', 'doctors.id')
+      .join('doctor_specialization', 'consultations.doctor_id', 'doctor_specialization.doctor_id')
+      .join('specialization', 'doctor_specialization.specialization_id', 'specialization.id')
+      .select("consultations.*",
+      "doctors.first_name",
+      "doctors.last_name",
+      "doctors.phone",
+      "doctors.email",
+      "doctors.avatar_path",
+      "doctor_specialization.*",
+      "specialization.*"
+    );
       console.log(response)
       if (response.length > 0) {
         return res.send(response)
