@@ -36,7 +36,7 @@ module.exports = {
   },
 
   async listData(req, res) {
-    const { user_id } = req.body;
+    const { user_id } = req.params;
 
     try {
       const response = await connection('users').where({ id: user_id }).select('*');
@@ -62,5 +62,33 @@ module.exports = {
       console.log(error)
       return res.send().status(404).send({ message: `Erro na exclusão do ID ${req.params.id}` });
     }
+  },
+
+  async update(req, res) {
+    const { filename } = req.file;
+    const { id, first_name, last_name, email, changedPhoto } = req.body;
+
+    if(filename){
+      const resposta = await connection('users').where({ id }).update({ avatar_path: filename, first_name, last_name, email });
+      console.log(resposta)
+      return res.status(200).send('Usuário atualizado com sucesso! (incluindo foto)');
+    }
+    else {
+      const resp = await connection('users').where({ id }).update({ first_name, last_name, email });
+      console.log(resp)
+      return res.status(200).send('Usuário atualizado com sucesso! (foto nao)');
+    }
+
+
+
+    // try {
+    //   const res = await connection('users').where({ id }).update({});
+    //   console.log(res)
+    //   return res.status(200).send('Usuário excluído com sucesso!');
+
+    // } catch (error) {
+    //   console.log(error)
+    //   return res.send().status(404).send({ message: `Erro na exclusão do ID ${req.params.id}` });
+    // }
   }
 }

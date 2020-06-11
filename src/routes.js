@@ -14,8 +14,9 @@ const uploads = multer(uploadConfig);
 
 // USUÁRIOS
 routes.get('/users', UserController.listAll);
-routes.get('/user', UserController.listData);
+routes.get('/users/:user_id/profile', UserController.listData);
 routes.post('/users', uploads.single('userphoto'), UserController.store);
+routes.put('/user', uploads.single('userphoto'), UserController.update);
 routes.delete('/users', UserController.delete);
 // MÉDICOS
 routes.get('/doctors', DoctorController.listAll);
@@ -25,7 +26,7 @@ routes.delete('/doctors/', DoctorController.delete);
 // CONSULTAS
 routes.post('/consultations', ConsultationController.store);
 routes.get('/consultations', ConsultationController.listAll);
-routes.get('/consult', ConsultationController.listConsult);
+routes.get('/users/:user_id/consults', ConsultationController.listConsult);
 routes.delete('/consult', ConsultationController.delete);
 // ESPECIALIZAÇÃO
 routes.post('/specializations', SpecializationController.store);

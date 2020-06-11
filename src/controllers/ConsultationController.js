@@ -42,7 +42,8 @@ module.exports = {
   },
 
   async listConsult(req, res) {
-    const { user_id } = req.body;
+    const { user_id } = req.params;
+    console.log(user_id)
 
     try {
       const response = await connection('consultations')
