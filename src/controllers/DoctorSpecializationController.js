@@ -53,7 +53,8 @@ module.exports = {
       const response = await connection('doctor_specialization')
         .join('doctors', 'doctor_specialization.doctor_id', 'doctors.id')
         .join('specialization', 'doctor_specialization.specialization_id', 'specialization.id')
-        .select("doctor_specialization.id",
+        .select("doctor_specialization.id AS spec_id",
+          "doctors.id AS doctor_id",
           "doctors.first_name",
           "doctors.last_name",
           "doctors.phone",
