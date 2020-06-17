@@ -59,7 +59,8 @@ module.exports = {
           "doctors.phone",
           "doctors.email",
           "doctors.avatar_path",
-        );
+        ).orderBy('consultations.date', 'asc'
+        ).orderBy('consultations.time', 'asc');
 
       if (response.length > 0) {
         return res.send(response)
